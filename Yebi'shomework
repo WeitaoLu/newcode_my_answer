@@ -1,0 +1,25 @@
+#https://ac.nowcoder.com/acm/contest/11187/B 
+#I think the problem is not correct.
+import sys
+
+count = int(sys.stdin.readline())
+nums = [int(x) for x in sys.stdin.readline().split()]
+
+# Initialize the maximum value with the first element
+mx = nums[0]
+and_res = nums[0]
+or_res = nums[0]
+l=r=0
+while r<count:
+    if(and_res&nums[r])+(or_res|nums[r])>and_res+or_res:
+        and_res &=nums[r]
+        or_res |=nums[r]
+        r+=1
+        mx = max(and_res+or_res,mx)
+        #print(mx,l,r)
+    else:
+        while l<=r and (and_res&nums[r])+(or_res|nums[r])<=and_res+or_res:
+            and_res|=~nums[l]
+            or_res&=~nums[l]
+            l+=1
+print(mx+1)
