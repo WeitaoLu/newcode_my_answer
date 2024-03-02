@@ -1,2 +1,3 @@
-# newcomer_answer
-leetcode practice
+# newcode_answer
+leetcode practice at newcode
+special margaret.
